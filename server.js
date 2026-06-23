@@ -5,6 +5,7 @@ import authRoutes from "./routes/authRoutes.js";
 import noteRoutes from "./routes/noteRoutes.js";
 import problemRoutes from './routes/problemRoutes.js';
 import applicationRoutes from './routes/applicationRoutes.js';
+import dashboardRoutes from './routes/dashboardRoutes.js';
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/notes", noteRoutes);
 app.use("/api/problems", problemRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("PrepPilot API Running");
