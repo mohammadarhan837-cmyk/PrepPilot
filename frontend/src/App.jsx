@@ -1,8 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/layout/ProtectedRoute';
+import AppLayout from './components/layout/AppLayout';
 
 // Auth pages
 import Login from './pages/auth/Login';
@@ -41,18 +42,34 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
 
-            {/* Protected routes */}
+            {/* Protected routes wrapped with AppLayout */}
             <Route path="/dashboard" element={
-              <ProtectedRoute><Dashboard /></ProtectedRoute>
+              <ProtectedRoute>
+                <AppLayout>
+                  <Dashboard />
+                </AppLayout>
+              </ProtectedRoute>
             } />
             <Route path="/dsa" element={
-              <ProtectedRoute><DSATracker /></ProtectedRoute>
+              <ProtectedRoute>
+                <AppLayout>
+                  <DSATracker />
+                </AppLayout>
+              </ProtectedRoute>
             } />
             <Route path="/jobs" element={
-              <ProtectedRoute><JobTracker /></ProtectedRoute>
+              <ProtectedRoute>
+                <AppLayout>
+                  <JobTracker />
+                </AppLayout>
+              </ProtectedRoute>
             } />
             <Route path="/notes" element={
-              <ProtectedRoute><Notes /></ProtectedRoute>
+              <ProtectedRoute>
+                <AppLayout>
+                  <Notes />
+                </AppLayout>
+              </ProtectedRoute>
             } />
 
             {/* 404 */}
