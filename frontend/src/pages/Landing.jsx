@@ -60,7 +60,7 @@ const Landing = () => {
           <div className="relative z-10 pb-16">
             <div className={`inline-flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-full border mb-5 ${isDark ? 'bg-[#1e1a3a] border-[#252338] text-[#a89bff]' : 'bg-[#f0eeff] border-[#e5e0ff] text-[#5b4fcf]'}`}>
               <span className="w-1.5 h-1.5 rounded-full bg-[#7c6fff] animate-pulse"></span>
-              Built for CSE placement season 2026
+              Built for CSE placement season
             </div>
 
             <h1 className={`text-4xl font-extrabold leading-tight tracking-tight mb-4 ${t.t1}`}>
