@@ -1,9 +1,17 @@
 import Note from "../models/Note.js";
 
 export const createNote = async (req, res) => {
+  const { company, content } = req.body;
+
+  if (!company || !content) {
+    return res.status(400).json({
+      message: "Company and content are required",
+    });
+  }
+
   const note = await Note.create({
-    title: req.body.title,
-    content: req.body.content,
+    company,
+    content,
     user: req.user._id,
   });
 
@@ -11,7 +19,7 @@ export const createNote = async (req, res) => {
 };
 
 export const getNotes = async (req, res) => {
-  const notes = await Note.find({ user: req.user._id });
+  const notes = await Note.find({ user: req.user._id }).sort({ createdAt: -1 });
 
   res.json(notes);
 };
@@ -31,7 +39,7 @@ export const updateNote = async (req, res) => {
     });
   }
 
-  note.title = req.body.title || note.title;
+  note.company = req.body.company || note.company;
   note.content = req.body.content || note.content;
 
   const updatedNote = await note.save();
